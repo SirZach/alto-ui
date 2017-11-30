@@ -9,19 +9,15 @@ import { FormControl, Validators } from '@angular/forms';
 export class NewSessionComponent {
   username = new FormControl('', [Validators.required]);
 
-  usernameIsEmpty: boolean = false;
-
-  getErrorMessage() {
-    return this.username.hasError('required') ? 'You must enter a value' : '';
-  }
+  constructor(
+    private router: Router
+  ) {}
 
   createNewSession() {
     this.username.markAsTouched();
 
     if (this.username.valid) {
-      console.log('valid');
-    } else {
-      console.log('invalid');
+      this.router.navigate(['session']);
     }
   }
 }

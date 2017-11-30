@@ -1,3 +1,4 @@
+import { LabelEditDialog } from './shared/components/labels/edit/edit.dialog';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -10,10 +11,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
  */
 import { environment } from 'environments/environment';
 import { APP_ROUTING }   from './app.routing.module';
+
 // App is our top level component
 import { AppComponent } from './app.component';
 
 import { CustomMaterialModule } from './material';
+import { SharedModule } from './shared';
 
 import '../styles/styles.scss';
 
@@ -23,7 +26,8 @@ import '../styles/styles.scss';
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent
+    AppComponent,
+    LabelEditDialog
   ],
   /**
    * Import Angular's modules.
@@ -36,6 +40,7 @@ import '../styles/styles.scss';
     HttpModule,
     CustomMaterialModule,
     FlexLayoutModule,
+    SharedModule,
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.
@@ -43,6 +48,9 @@ import '../styles/styles.scss';
      * This is a simple example, a big app should probably implement some logic
      */
     ...environment.showDevModule ? [ ] : [],
+  ],
+  entryComponents: [
+    LabelEditDialog
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

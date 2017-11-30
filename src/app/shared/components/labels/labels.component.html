@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title>Labels</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let label of labels">
+        <h3 matLine>{{label.name}}</h3>
+        <button mat-icon-button (click)="edit(label)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="delete(label)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Add</button>
+  </mat-card-actions>
+</mat-card>

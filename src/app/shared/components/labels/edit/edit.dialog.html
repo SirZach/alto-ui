@@ -1,0 +1,6 @@
+<h2>Edit</h2>
+<mat-form-field>
+  <input matInput placeholder="Label name" [formControl]="label" required>
+  <mat-error>You must enter a value.</mat-error>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="save()" class="d-b mt-16">Save</button>

@@ -9,6 +9,9 @@ const routes: Routes = [
   }, {
     path: 'new-session',
     loadChildren: './modules/new-session/index#NewSessionModule'
+  }, {
+    path: 'session',
+    loadChildren: './modules/session/index#SessionModule'
   }
 ];
 

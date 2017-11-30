@@ -1,0 +1,14 @@
+mat-card {
+  min-width: 300px;
+}
+
+mat-list-item {
+  button {
+    display: none;
+  }
+  &:hover {
+    button {
+      display: inline-block;
+    }
+  }
+}
