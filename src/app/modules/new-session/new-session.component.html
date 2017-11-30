@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>New Document Labeling Session</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Username" [formControl]="username" required>
+      <mat-error>You must enter a value.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="createNewSession()" class="d-b">Start</button>
+  </mat-card-content>
+</mat-card>
