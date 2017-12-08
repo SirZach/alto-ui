@@ -1,1 +1,17 @@
-<label-manager></label-manager>
+<label-manager
+  [labels]="labels"
+  [labelProgress]="labelProgress"
+></label-manager>
+
+<div class="fg-1">
+  <mat-card *ngFor="let documentGroup of documentGroups" class="mb-16">
+    <mat-card-title>{{documentGroup.themes | themes}}</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let document of documentGroup.documents">
+          <h3 matLine>{{document.title}}</h3>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

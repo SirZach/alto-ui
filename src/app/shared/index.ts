@@ -16,6 +16,11 @@ import {
   DocumentGroupComponent
 } from './components';
 
+// Pipes
+import {
+  ThemesPipe
+} from './pipes';
+
 @NgModule({
   imports: [
     FormsModule,
@@ -32,7 +37,7 @@ import {
     DocumentGroupComponent,
 
     // Pipes
-
+    ThemesPipe
   ],
   exports: [
     // angular
@@ -46,7 +51,7 @@ import {
     DocumentGroupComponent,
 
     // pipes
-
+    ThemesPipe
   ],
 })
 export class SharedModule {

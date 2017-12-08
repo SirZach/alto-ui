@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Label } from '../../../model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
@@ -12,12 +12,8 @@ import { LabelAddDialog } from './add/add.dialog';
   styleUrls: ['./label-manager.component.scss']
 })
 export class LabelManagerComponent {
-  labels: Label[] = [
-    { id: 1, name: 'Football' },
-    { id: 2, name: 'Soccer' },
-    { id: 3, name: 'Tennis' },
-    { id: 4, name: 'Basketball' }
-  ] as Label[];
+  @Input() labels: Label[];
+  @Input() labelProgress: number;
 
   constructor(
     public dialog: MatDialog,
