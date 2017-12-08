@@ -12,7 +12,7 @@ import {
 
 // Components
 import {
-  LabelsComponent,
+  LabelManagerComponent,
   DocumentGroupComponent
 } from './components';
 
@@ -28,7 +28,7 @@ import {
   declarations: [
 
     // SHARED COMPONENTS
-    LabelsComponent,
+    LabelManagerComponent,
     DocumentGroupComponent,
 
     // Pipes
@@ -42,7 +42,7 @@ import {
     CustomMaterialModule,
 
     // SHARED COMPONENTS
-    LabelsComponent,
+    LabelManagerComponent,
     DocumentGroupComponent,
 
     // pipes
