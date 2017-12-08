@@ -22,12 +22,16 @@ export class LabelEditDialog implements OnInit {
     this.label.setValue(this.data.name);
   }
 
+  cancel() {
+    this.dialogRef.close();
+  }
+
   save() {
     this.label.markAsTouched();
 
     if (this.label.valid) {
       // new value is this.label.value
-      this.dialogRef.close();
+      this.dialogRef.close(this.data);
     }
   }
 }
