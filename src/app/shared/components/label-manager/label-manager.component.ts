@@ -13,7 +13,6 @@ import { LabelAddDialog } from './add/add.dialog';
 })
 export class LabelManagerComponent {
   @Input() labels: Label[];
-  @Input() labelProgress: number;
 
   constructor(
     public dialog: MatDialog,

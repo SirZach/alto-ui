@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { Label, DocumentGroup, Document } from '../../model';
+import {
+  LabelService
+} from '../../shared/services';
 
 let counter = 1;
 function getDocuments(): Document[] {
@@ -37,18 +40,19 @@ function getDocumentGroups(): DocumentGroup[] {
   styleUrls: ['./session.component.scss']
 })
 export class SessionComponent implements OnInit {
-  labels: Label[] = [
-    { id: 1, name: 'Football' },
-    { id: 2, name: 'Soccer' },
-    { id: 3, name: 'Tennis' },
-    { id: 4, name: 'Basketballs' }
-  ] as Label[];
+  labels: Label[];
 
   labelProgress: number = 80;
 
   documentGroups: DocumentGroup[];
 
+  constructor(
+    private $label: LabelService
+  ) {}
+
   ngOnInit() {
     this.documentGroups = getDocumentGroups();
+    this.$label.getLabels()
+      .then(labels => this.labels = labels);
   }
 }

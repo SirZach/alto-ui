@@ -7,7 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Services
 import {
-  // ApiService
+  LabelService
 } from './services';
 
 // Components
@@ -59,6 +59,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
+        LabelService
       ]
     };
   }

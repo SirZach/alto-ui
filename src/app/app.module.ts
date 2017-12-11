@@ -4,7 +4,7 @@ import { LabelAddDialog } from './shared/components/label-manager/add/add.dialog
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -41,10 +41,10 @@ import '../styles/styles.scss';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     CustomMaterialModule,
     FlexLayoutModule,
-    SharedModule,
+    SharedModule.forRoot(),
 
     /**
      * This section will import the `DevModuleModule` only in certain build types.

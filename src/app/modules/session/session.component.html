@@ -1,7 +1,22 @@
-<label-manager
-  [labels]="labels"
-  [labelProgress]="labelProgress"
-></label-manager>
+<div class="left-column">
+  <label-manager [labels]="labels" class="mb-16"></label-manager>
+
+  <mat-card>
+    <mat-card-title>Progress</mat-card-title>
+    <mat-card-content>
+      <mat-progress-bar mode="determinate" color="accent" [value]="labelProgress"></mat-progress-bar>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        color="primary"
+        [disabled]="labelProgress < 100"
+        matTooltip="Must have 100% label progress to finish"
+        [matTooltipDisabled]="false"
+        (click)="finish()">Finish</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
 <div class="fg-1">
   <mat-card *ngFor="let documentGroup of documentGroups" class="mb-16">
