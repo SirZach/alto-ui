@@ -19,11 +19,11 @@
 </div>
 
 <div class="fg-1 right-column">
-  <mat-card *ngFor="let documentGroup of documentGroups" class="mb-16">
-    <mat-card-title>{{documentGroup.themes | themes}}</mat-card-title>
+  <mat-card *ngFor="let topicGroup of topicGroups" class="mb-16">
+    <mat-card-title>{{topicGroup.themes | themes}}</mat-card-title>
     <mat-card-content>
       <mat-list>
-        <mat-list-item *ngFor="let document of documentGroup.documents">
+        <mat-list-item *ngFor="let document of topicGroup.documents">
           <h3 (click)="openDocument(document)" matLine class="cur-p link">{{document.title}}</h3>
         </mat-list-item>
       </mat-list>

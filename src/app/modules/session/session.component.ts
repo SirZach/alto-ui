@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
-import { Label, DocumentGroup, Document } from '../../model';
+import { Label, TopicGroup, Document } from '../../model';
 import {
   LabelService,
   TopicGroupService
@@ -19,7 +19,7 @@ export class SessionComponent implements OnInit {
 
   labelProgress: number = 80;
 
-  documentGroups: DocumentGroup[];
+  topicGroups: TopicGroup[];
 
   constructor(
     private $label: LabelService,
@@ -30,7 +30,7 @@ export class SessionComponent implements OnInit {
 
   ngOnInit() {
     this.$topicGroup.getTopicGroups()
-      .then(topicGroups => this.documentGroups = topicGroups);
+      .then(topicGroups => this.topicGroups = topicGroups);
     this.$label.getLabels()
       .then(labels => this.labels = labels);
   }

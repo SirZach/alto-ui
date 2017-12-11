@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentGroup, Document } from '../../model';
+import { TopicGroup, Document } from '../../model';
 
 let counter = 1;
 function getDocuments(): Document[] {
@@ -14,21 +14,21 @@ function getDocuments(): Document[] {
     new Document({ id: 1, title: 'a document title', html: `<p> south east south south north </p>` })    
   ];
 }
-function getDocumentGroup(): DocumentGroup {
-  return new DocumentGroup({
+function getTopicGroup(): TopicGroup {
+  return new TopicGroup({
     id: counter++,
     themes: ['cat', 'dog', 'mouse'],
     documents: getDocuments()
   });
 }
-function getDocumentGroups(): DocumentGroup[] {
+function getTopicGroups(): TopicGroup[] {
   return [
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup()
+    getTopicGroup(),
+    getTopicGroup(),
+    getTopicGroup(),
+    getTopicGroup(),
+    getTopicGroup(),
+    getTopicGroup()
   ];
 }
 
@@ -38,7 +38,7 @@ export class TopicGroupService {
 
   constructor(private http: HttpClient) {}
 
-  getTopicGroups(): Promise<DocumentGroup[]> {
-    return Promise.resolve(getDocumentGroups());
+  getTopicGroups(): Promise<TopicGroup[]> {
+    return Promise.resolve(getTopicGroups());
   }
 }

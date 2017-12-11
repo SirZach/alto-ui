@@ -1,11 +1,11 @@
 import { Document } from './document';
 
-export class DocumentGroup {
+export class TopicGroup {
   id: number;
   documents: Document[];
   themes: string[]
 
-  constructor(fields: Partial<DocumentGroup>) {
+  constructor(fields: Partial<TopicGroup>) {
     Object.assign(this, fields);
   }
 }
