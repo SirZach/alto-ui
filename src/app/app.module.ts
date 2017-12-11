@@ -1,6 +1,7 @@
 import { LabelDeleteDialog } from './shared/components/label-manager/delete/delete.dialog';
 import { LabelEditDialog } from './shared/components/label-manager/edit/edit.dialog';
 import { LabelAddDialog } from './shared/components/label-manager/add/add.dialog';
+import { LabeledDocumentsDialog } from './shared/components/label-manager/labeled-documents/labeled-documents.dialog';
 import { DocumentLabelDialog } from './modules/session/document-label/document-label.dialog';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,7 +34,8 @@ import '../styles/styles.scss';
     LabelEditDialog,
     LabelDeleteDialog,
     LabelAddDialog,
-    DocumentLabelDialog
+    DocumentLabelDialog,
+    LabeledDocumentsDialog
   ],
   /**
    * Import Angular's modules.
@@ -59,7 +61,8 @@ import '../styles/styles.scss';
     LabelEditDialog,
     LabelDeleteDialog,
     LabelAddDialog,
-    DocumentLabelDialog
+    DocumentLabelDialog,
+    LabeledDocumentsDialog
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

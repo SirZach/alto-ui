@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Label } from '../../../model';
+import { Label, Document } from '../../../model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { LabelEditDialog } from './edit/edit.dialog';
 import { LabelDeleteDialog } from './delete/delete.dialog';
 import { LabelAddDialog } from './add/add.dialog';
+import { LabeledDocumentsDialog } from './labeled-documents/labeled-documents.dialog';
 
 @Component({
   selector: 'label-manager',
@@ -60,6 +61,13 @@ export class LabelManagerComponent {
           duration: 1000
         });
       }
+    });
+  }
+
+  openLabeledDocuments(label: Label) {
+    const dialogRef = this.dialog.open(LabeledDocumentsDialog, {
+      width: '450px',
+      data: label
     });
   }
 }

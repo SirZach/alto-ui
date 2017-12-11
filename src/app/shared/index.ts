@@ -13,8 +13,7 @@ import {
 
 // Components
 import {
-  LabelManagerComponent,
-  DocumentGroupComponent
+  LabelManagerComponent
 } from './components';
 
 // Pipes
@@ -35,7 +34,6 @@ import {
 
     // SHARED COMPONENTS
     LabelManagerComponent,
-    DocumentGroupComponent,
 
     // Pipes
     ThemesPipe
@@ -49,7 +47,6 @@ import {
 
     // SHARED COMPONENTS
     LabelManagerComponent,
-    DocumentGroupComponent,
 
     // pipes
     ThemesPipe

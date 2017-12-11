@@ -47,7 +47,18 @@ export class SessionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((label: Label) => {
       if (label) {
+        if (this.labelingDocument.appliedLabel) {
+          const documentIndex = this.labelingDocument.appliedLabel.documents.findIndex(d => d.id === this.labelingDocument.id);
+          this.labelingDocument.appliedLabel.documents.splice(documentIndex, 1);
+        }
         this.labelingDocument.appliedLabel = label;
+
+        if (label.documents) {
+          label.documents.push(this.labelingDocument);
+        } else {
+          label.documents = [this.labelingDocument];
+        }
+
         this.snackbar.open('Document labeled', 'Got It', {
           duration: 1000
         });

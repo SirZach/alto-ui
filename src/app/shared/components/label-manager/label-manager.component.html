@@ -3,7 +3,12 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let label of labels">
-        <h3 matLine title="{{label.name}}">{{label.name}}</h3>
+        <h3 matLine title="{{label.name}}" (click)="openLabeledDocuments(label)" class="cur-p link">
+          <ng-container *ngIf="label.documents && label.documents.length">
+            ({{label.documents.length}})
+          </ng-container>
+          {{label.name}}
+        </h3>
         <button mat-icon-button (click)="edit(label)">
           <mat-icon>edit</mat-icon>
         </button>

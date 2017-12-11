@@ -1,0 +1,9 @@
+<h2>{{label.name}}</h2>
+<mat-list>
+  <mat-list-item *ngFor="let document of label.documents">
+    <h3 matLine>{{document.title}}</h3>
+  </mat-list-item>
+</mat-list>
+<div>
+  <button mat-button (click)="close()">Close</button>
+</div>
