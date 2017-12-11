@@ -37,8 +37,11 @@ export class SessionComponent implements OnInit {
 
   openDocument(document: Document) {
     const dialogRef = this.dialog.open(DocumentLabelDialog, {
-      width: '450px',
-      data: document
+      width: '80vw',
+      data: {
+        document,
+        labels: this.labels
+      }
     });
 
     dialogRef.afterClosed().subscribe((document: Document) => {

@@ -6,13 +6,19 @@ import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'document-label',
   templateUrl: './document-label.dialog.html',
+  styleUrls: ['./document-label.dialog.scss']
 })
 export class DocumentLabelDialog implements OnInit {
-  label = new FormControl('', [Validators.required]);
+  label = new FormControl('', []);
+  document: Document;
+  labels: Label[];
 
   constructor(
     public dialogRef: MatDialogRef<DocumentLabelDialog>,
-    @Inject(MAT_DIALOG_DATA) public document: Document) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.document = data.document;
+    this.labels = data.labels;
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
