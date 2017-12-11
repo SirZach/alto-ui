@@ -12,6 +12,7 @@ export class DocumentLabelDialog implements OnInit {
   label = new FormControl('', []);
   document: Document;
   labels: Label[];
+  selectLabel: Label;
 
   constructor(
     public dialogRef: MatDialogRef<DocumentLabelDialog>,
@@ -25,19 +26,26 @@ export class DocumentLabelDialog implements OnInit {
   }
 
   ngOnInit() {
-    // this.label.setValue();
+    if (this.document.appliedLabel) {
+      this.selectLabel = this.document.appliedLabel;
+    }
   }
 
   cancel() {
     this.dialogRef.close();
   }
 
-  save() {
-    this.label.markAsTouched();
+  save(selectLabel: Label) {
+    let label: Label;
 
-    if (this.label.valid) {
-      // new value is this.label.value
-      this.dialogRef.close(this.document);
+    if (selectLabel) {
+      label = selectLabel;
+    } else {
+      label = this.labels.find(l => this.label.value === l.name);
+    }
+
+    if (label) {
+      this.dialogRef.close(label);
     }
   }
 }

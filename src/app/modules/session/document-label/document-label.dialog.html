@@ -1,15 +1,17 @@
 <h2>{{document.title}}</h2>
 <div class="html-container" [innerHTML]="document.html"></div>
-<mat-form-field>
-  <mat-select placeholder="Select existing label">
-    <mat-option *ngFor="let label of labels" value="label">{{label.name}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<div class="or">or</div>
-<mat-form-field>
-  <input matInput placeholder="Create new label" [formControl]="label">
-</mat-form-field>
+<div class="form-container">
+  <mat-form-field>
+    <mat-select placeholder="Select existing label" [(value)]="selectLabel">
+      <mat-option *ngFor="let label of labels" [value]="label">{{label.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="or">or</div>
+  <mat-form-field>
+    <input matInput placeholder="Create new label" [formControl]="label">
+  </mat-form-field>
+</div>
 <div>
   <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="save()" class="mt-16">Save</button>
+  <button mat-raised-button color="primary" (click)="save(selectLabel)" class="mt-16">Save</button>
 </div>

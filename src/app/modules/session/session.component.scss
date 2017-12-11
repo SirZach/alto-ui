@@ -11,3 +11,9 @@
     overflow: auto;
   }
 }
+
+.document-title {
+  &.is-labeled {
+    color: #ccc!important;
+  }
+}

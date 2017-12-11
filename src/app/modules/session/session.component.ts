@@ -16,10 +16,9 @@ import { DocumentLabelDialog } from './document-label/document-label.dialog';
 })
 export class SessionComponent implements OnInit {
   labels: Label[];
-
   labelProgress: number = 80;
-
   topicGroups: TopicGroup[];
+  labelingDocument: Document;
 
   constructor(
     private $label: LabelService,
@@ -36,6 +35,8 @@ export class SessionComponent implements OnInit {
   }
 
   openDocument(document: Document) {
+    this.labelingDocument = document;
+  
     const dialogRef = this.dialog.open(DocumentLabelDialog, {
       width: '80vw',
       data: {
@@ -44,8 +45,9 @@ export class SessionComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe((document: Document) => {
-      if (document) {
+    dialogRef.afterClosed().subscribe((label: Label) => {
+      if (label) {
+        this.labelingDocument.appliedLabel = label;
         this.snackbar.open('Document labeled', 'Got It', {
           duration: 1000
         });
