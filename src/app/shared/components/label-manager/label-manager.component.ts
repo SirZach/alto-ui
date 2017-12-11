@@ -21,7 +21,7 @@ export class LabelManagerComponent {
 
   edit(label: Label) {
     const dialogRef = this.dialog.open(LabelEditDialog, {
-      width: '250px',
+      width: '450px',
       data: label
     });
 
@@ -36,7 +36,7 @@ export class LabelManagerComponent {
 
   delete(label: Label) {
     const dialogRef = this.dialog.open(LabelDeleteDialog, {
-      width: '250px',
+      width: '450px',
       data: label
     });
 
@@ -51,7 +51,7 @@ export class LabelManagerComponent {
 
   add() {
     const dialogRef = this.dialog.open(LabelAddDialog, {
-      width: '250px'
+      width: '450px'
     });
 
     dialogRef.afterClosed().subscribe((label: Label) => {

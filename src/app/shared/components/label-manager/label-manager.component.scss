@@ -7,6 +7,7 @@ mat-card {
 }
 
 mat-list-item {
+  max-width: 300px;
   button {
     display: none;
   }
@@ -15,4 +16,9 @@ mat-list-item {
       display: inline-block;
     }
   }
+}
+
+mat-card-content {
+  max-height: 600px;
+  overflow: auto;
 }

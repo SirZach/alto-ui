@@ -3,36 +3,11 @@ import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { Label, DocumentGroup, Document } from '../../model';
 import {
-  LabelService
+  LabelService,
+  TopicGroupService
 } from '../../shared/services';
-
-let counter = 1;
-function getDocuments(): Document[] {
-  return [
-    new Document({id: 1, title: 'a document title' }),
-    new Document({id: 2, title: 'a document title' }),
-    new Document({id: 3, title: 'a document title' }),
-    new Document({id: 4, title: 'a document title' }),
-    new Document({id: 5, title: 'a document title' })
-  ];
-}
-function getDocumentGroup(): DocumentGroup {
-  return new DocumentGroup({
-    id: counter++,
-    themes: ['cat', 'dog', 'mouse'],
-    documents: getDocuments()
-  });
-}
-function getDocumentGroups(): DocumentGroup[] {
-  return [
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup(),
-    getDocumentGroup()
-  ];
-}
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { DocumentLabelDialog } from './document-label/document-label.dialog';
 
 @Component({
   selector: 'session',
@@ -47,12 +22,31 @@ export class SessionComponent implements OnInit {
   documentGroups: DocumentGroup[];
 
   constructor(
-    private $label: LabelService
+    private $label: LabelService,
+    private $topicGroup: TopicGroupService,
+    public dialog: MatDialog,
+    public snackbar: MatSnackBar
   ) {}
 
   ngOnInit() {
-    this.documentGroups = getDocumentGroups();
+    this.$topicGroup.getTopicGroups()
+      .then(topicGroups => this.documentGroups = topicGroups);
     this.$label.getLabels()
       .then(labels => this.labels = labels);
+  }
+
+  openDocument(document: Document) {
+    const dialogRef = this.dialog.open(DocumentLabelDialog, {
+      width: '450px',
+      data: document
+    });
+
+    dialogRef.afterClosed().subscribe((document: Document) => {
+      if (document) {
+        this.snackbar.open('Document labeled', 'Got It', {
+          duration: 1000
+        });
+      }
+    });
   }
 }

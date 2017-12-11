@@ -5,4 +5,9 @@
   .left-column {
     margin-right: 32px;
   }
+
+  .right-column {
+    max-height: calc(100vh - 96px);
+    overflow: auto;
+  }
 }
