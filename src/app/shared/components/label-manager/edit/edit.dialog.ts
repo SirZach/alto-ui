@@ -30,7 +30,7 @@ export class LabelEditDialog implements OnInit {
     this.label.markAsTouched();
 
     if (this.label.valid) {
-      // new value is this.label.value
+      this.data.name = this.label.value;
       this.dialogRef.close(this.data);
     }
   }

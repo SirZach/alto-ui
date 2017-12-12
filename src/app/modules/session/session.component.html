@@ -1,5 +1,11 @@
 <div class="left-column">
-  <label-manager [labels]="labels" class="mb-16"></label-manager>
+  <label-manager
+    [labels]="labels"
+    (onAdd)="addLabel($event)"
+    (onDelete)="deleteLabel($event)"
+    (onEdit)="editLabel($event)"
+    class="mb-16">
+  </label-manager>
 
   <mat-card>
     <mat-card-title>Progress</mat-card-title>

@@ -38,7 +38,6 @@ export class SessionComponent implements OnInit {
     this.labelingDocument = document;
   
     const dialogRef = this.dialog.open(DocumentLabelDialog, {
-      width: '80vw',
       data: {
         document,
         labels: this.labels
@@ -64,5 +63,41 @@ export class SessionComponent implements OnInit {
         });
       }
     });
+  }
+
+  sortLabels() {
+    this.labels = this.labels.sort((a, b) => {
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
+
+      return aName > bName ? 1 : aName < bName ? -1 : 0;
+    });
+  }
+
+  addLabel(label: Label) {
+    this.labels.push(label);
+    this.sortLabels();
+  }
+
+  deleteLabel(label: Label) {
+    this.$label.delete(label)
+      .then(() => {
+        const labelIndex = this.labels.findIndex(l => l.id === label.id);
+
+        this.labels.splice(labelIndex, 1);
+        this.snackbar.open('Label deleted', 'Got It', {
+          duration: 1000
+        });
+      });
+  }
+
+  editLabel(label: Label) {
+    this.$label.put(label)
+      .then((label) => {
+        this.sortLabels();
+        this.snackbar.open('Label updated', 'Got It', {
+          duration: 1000
+        });
+      });
   }
 }

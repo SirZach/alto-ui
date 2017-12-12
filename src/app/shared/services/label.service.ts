@@ -45,4 +45,12 @@ export class LabelService {
       { id: 31, name: 'trucking and transportation taxi and delivery' }
     ] as Label[]);
   }
+
+  delete(label: Label): Promise<any> {
+    return Promise.resolve();
+  }
+
+  put(label: Label): Promise<Label> {
+    return Promise.resolve(label);
+  }
 }

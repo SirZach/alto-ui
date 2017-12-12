@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Label, Document } from '../../../model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
@@ -14,6 +14,9 @@ import { LabeledDocumentsDialog } from './labeled-documents/labeled-documents.di
 })
 export class LabelManagerComponent {
   @Input() labels: Label[];
+  @Output() onAdd = new EventEmitter<Label>();
+  @Output() onDelete = new EventEmitter<Label>();
+  @Output() onEdit = new EventEmitter<Label>();
 
   constructor(
     public dialog: MatDialog,
@@ -28,9 +31,7 @@ export class LabelManagerComponent {
 
     dialogRef.afterClosed().subscribe((updatedLabel: Label) => {
       if (updatedLabel) {
-        this.snackbar.open('Label updated', 'Got It', {
-          duration: 1000
-        });
+        this.onEdit.emit(updatedLabel);
       }
     });
   }
@@ -43,9 +44,7 @@ export class LabelManagerComponent {
 
     dialogRef.afterClosed().subscribe((label: Label) => {
       if (label) {
-        this.snackbar.open('Label deleted', 'Got It', {
-          duration: 1000
-        });
+        this.onDelete.emit(label);
       }
     });
   }
@@ -57,6 +56,7 @@ export class LabelManagerComponent {
 
     dialogRef.afterClosed().subscribe((label: Label) => {
       if (label) {
+        this.onAdd.emit(label);
         this.snackbar.open('Label created', 'Got It', {
           duration: 1000
         });
