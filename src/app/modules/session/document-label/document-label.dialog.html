@@ -3,7 +3,10 @@
 <div class="form-container">
   <mat-form-field>
     <mat-select placeholder="Select existing label" [(value)]="selectLabel">
-      <mat-option *ngFor="let label of labels" [value]="label">{{label.name}}</mat-option>
+      <mat-option *ngFor="let label of labels" [value]="label">
+        <span [style.background-color]="label.color" class="label-color-box"></span>
+        {{label.name}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <div class="or">or</div>
