@@ -7,10 +7,18 @@ import { Label } from '../../model';
 @Injectable()
 export class LabelService {
   private URL = `${process.env.API_URL}`;
+  private COLORS = ['Turquoise','IndianRed','Orchid','ForestGreen','LightSalmon','PowderBlue','Thistle','SkyBlue','GoldenRod',
+    'LimeGreen','Tomato','FireBrick','DodgerBlue','Orange','Brown','DarkSeaGreen','BlueViolet','DarkSlateBlue','YellowGreen','Red',
+    'Salmon','CadetBlue','MediumAquaMarine','DarkTurquoise','RoyalBlue','Crimson','DarkRed','Khaki','LightPink','Aquamarine','Tan',
+    'MidnightBlue','MediumOrchid','HotPink','Violet','Chocolate','DarkGoldenRod','Blue','DarkGreen','SandyBrown','DeepPink',
+    'Magenta','Lime','SlateBlue','Olive','Darkorange','DarkCyan','LightCoral','MediumPurple','DarkViolet','Maroon','SteelBlue',
+    'LightSteelBlue','SaddleBrown','Indigo','Plum','Coral','Peru','CornflowerBlue','DeepSkyBlue','Sienna',
+    'DarkSalmon','GreenYellow','Fuchsia','LawnGreen','MediumVioletRed','OrangeRed','RosyBrown','PaleVioletRed','Purple',
+    'DarkMagenta','MistyRose','Gold'];
 
   constructor(private http: HttpClient) {}
 
-  getLabels(): Promise<Label[]> {
+  get(): Promise<Label[]> {
     return Promise.resolve([
       { id: 1, name: 'admin and paraprofessional' },
       { id: 2, name: 'animal services' },
@@ -52,5 +60,13 @@ export class LabelService {
 
   put(label: Label): Promise<Label> {
     return Promise.resolve(label);
+  }
+
+  colorLabel(label: Label) {
+    if (!label.color) {
+      label.color = this.COLORS.shift();
+      // TODO save the label's color?
+      // this.put(label);
+    }
   }
 }

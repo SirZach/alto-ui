@@ -7,6 +7,7 @@
           <ng-container *ngIf="label.documents && label.documents.length">
             ({{label.documents.length}})
           </ng-container>
+          <span [style.background-color]="label.color" class="label-color-box"></span>
           {{label.name}}
         </h3>
         <button mat-icon-button (click)="edit(label)">

@@ -30,8 +30,11 @@ export class SessionComponent implements OnInit {
   ngOnInit() {
     this.$topicGroup.getTopicGroups()
       .then(topicGroups => this.topicGroups = topicGroups);
-    this.$label.getLabels()
-      .then(labels => this.labels = labels);
+    this.$label.get()
+      .then((labels) => {
+        labels.forEach(label => this.$label.colorLabel(label));
+        this.labels = labels;
+      });
   }
 
   openDocument(document: Document) {

@@ -30,7 +30,16 @@
     <mat-card-content>
       <mat-list>
         <mat-list-item *ngFor="let document of topicGroup.documents">
-          <h3 (click)="openDocument(document)" matLine class="cur-p link document-title" [class.is-labeled]="document.appliedLabel">{{document.title}}</h3>
+          <h3
+            (click)="openDocument(document)"
+            matLine
+            class="cur-p link document-title"
+            [class.is-labeled]="document.appliedLabel">
+            <ng-container *ngIf="document.appliedLabel">
+              <span [style.background-color]="document.appliedLabel.color" class="label-color-box"></span>
+            </ng-container>
+            {{document.title}}
+          </h3>
         </mat-list-item>
       </mat-list>
     </mat-card-content>
