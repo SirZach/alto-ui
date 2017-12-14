@@ -3,6 +3,7 @@
  */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from 'environments/environment';
+import { MatSnackBar } from '@angular/material';
 
 /**
  * App Component
@@ -17,11 +18,15 @@ import { environment } from 'environments/environment';
 export class AppComponent implements OnInit {
   public ngOnInit() {}
 
+  constructor(public snackbar: MatSnackBar) {}
+
   timesUp() {
     // TODO end the process
   }
 
   fiveMinutesLeft() {
-    window.alert('5 minutes left');
+    this.snackbar.open('5 minutes left', 'Got It', {
+      duration: 5000
+    });
   }
 }
