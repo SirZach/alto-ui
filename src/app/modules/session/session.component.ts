@@ -4,7 +4,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { Label, TopicGroup, Document } from '../../model';
 import {
   LabelService,
-  TopicGroupService
+  TopicGroupService,
+  CountdownService
 } from '../../shared/services';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { DocumentLabelDialog } from './document-label/document-label.dialog';
@@ -23,6 +24,7 @@ export class SessionComponent implements OnInit {
   constructor(
     private $label: LabelService,
     private $topicGroup: TopicGroupService,
+    private $countdown: CountdownService,
     public dialog: MatDialog,
     public snackbar: MatSnackBar
   ) {}
@@ -34,6 +36,7 @@ export class SessionComponent implements OnInit {
       .then((labels) => {
         labels.forEach(label => this.$label.colorLabel(label));
         this.labels = labels;
+        this.$countdown.startTimer();
       });
   }
 

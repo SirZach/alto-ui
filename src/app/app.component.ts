@@ -16,4 +16,12 @@ import { environment } from 'environments/environment';
 })
 export class AppComponent implements OnInit {
   public ngOnInit() {}
+
+  timesUp() {
+    // TODO end the process
+  }
+
+  fiveMinutesLeft() {
+    window.alert('5 minutes left');
+  }
 }

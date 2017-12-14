@@ -1,9 +1,11 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
   <span>Interactive Document Labeling</span>
+  <div fxFlex="1 1 100%"></div>
+  <countdown duration=60 (onTimeEnd)="timesUp()" (onFiveMinutes)="fiveMinutesLeft()"></countdown>
 </mat-toolbar>
 
 <div fxLayout="row" fxLayoutAlign="center" class="p-16">
   <div class="content">
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -8,12 +8,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // Services
 import {
   LabelService,
-  TopicGroupService
+  TopicGroupService,
+  CountdownService
 } from './services';
 
 // Components
 import {
-  LabelManagerComponent
+  LabelManagerComponent,
+  CountdownComponent
 } from './components';
 
 // Pipes
@@ -34,6 +36,7 @@ import {
 
     // SHARED COMPONENTS
     LabelManagerComponent,
+    CountdownComponent,
 
     // Pipes
     ThemesPipe
@@ -47,6 +50,7 @@ import {
 
     // SHARED COMPONENTS
     LabelManagerComponent,
+    CountdownComponent,
 
     // pipes
     ThemesPipe
@@ -58,7 +62,8 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         LabelService,
-        TopicGroupService
+        TopicGroupService,
+        CountdownService
       ]
     };
   }

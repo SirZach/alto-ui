@@ -26,8 +26,9 @@ module.exports = function (options) {
   const PORT = process.env.PORT || 3000;
 
   const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, {
-    host: HOST,
+    host: '0.0.0.0',
     port: PORT,
+    disableHostCheck: true,
     ENV: ENV,
     HMR: helpers.hasProcessFlag('hot'),
     PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT
