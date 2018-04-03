@@ -71,7 +71,6 @@ module.exports = function (options) {
        * An array of directory names to be resolved to the current directory
        */
       modules: [helpers.root('src'), helpers.root('node_modules')],
-
       /**
        * Add support for lettable operators.
        *
@@ -91,7 +90,11 @@ module.exports = function (options) {
        *
        * BE AWARE that not using lettable operators will probably result in significant payload added to your bundle.
        */
-      alias: buildUtils.rxjsAlias(supportES2015)
+      alias: Object.assign(buildUtils.rxjsAlias(supportES2015), { 
+          CM: helpers.root('src', 'app', 'cm'), 
+          Shared: helpers.root('src', 'app', 'shared') 
+        }
+      )
     },
 
     /**
@@ -179,7 +182,9 @@ module.exports = function (options) {
         'AOT': METADATA.AOT,
         'process.env.ENV': JSON.stringify(METADATA.ENV),
         'process.env.NODE_ENV': JSON.stringify(METADATA.ENV),
-        'process.env.HMR': METADATA.HMR
+        'process.env.HMR': METADATA.HMR,
+        'process.env.BRANCH': JSON.stringify(METADATA.branch), 
+        'process.env.API_URL': JSON.stringify(METADATA.API_URL)
       }),
 
       /**

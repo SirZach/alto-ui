@@ -1,3 +1,4 @@
+
 /* tslint:disable */
 
 import { ApplicationRef, NgModuleRef } from '@angular/core';
@@ -30,5 +31,4 @@ export const environment: Environment = {
   ENV_PROVIDERS: [
 
   ]
-};
-
+}

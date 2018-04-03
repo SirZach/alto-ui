@@ -24,14 +24,17 @@ module.exports = function (options) {
   const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
   const HOST = process.env.HOST || 'localhost';
   const PORT = process.env.PORT || 3000;
+  const BRANCH = (process.env.CIRCLE_BRANCH || 'develop'); 
+  const API_URL = process.env.API_URL || 'http://localhost:8080';
 
   const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, {
-    host: '0.0.0.0',
+    host: HOST,
     port: PORT,
-    disableHostCheck: true,
     ENV: ENV,
     HMR: helpers.hasProcessFlag('hot'),
-    PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT
+    PUBLIC: process.env.PUBLIC_DEV || HOST + ':' + PORT,
+    branch: BRANCH,
+    API_URL: API_URL
   });
 
   return webpackMerge(commonConfig({ env: ENV, metadata: METADATA  }), {

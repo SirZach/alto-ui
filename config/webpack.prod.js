@@ -49,11 +49,15 @@ function getUglifyOptions (supportES2015) {
 module.exports = function (env) {
   const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
   const supportES2015 = buildUtils.supportES2015(buildUtils.DEFAULT_METADATA.tsConfigPath);
+  const BRANCH = (process.env.CIRCLE_BRANCH || 'develop'); 
+  const API_URL = process.env.API_URL || 'http://localhost:8080';
   const METADATA = Object.assign({}, buildUtils.DEFAULT_METADATA, {
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 8080,
     ENV: ENV,
-    HMR: false
+    HMR: false,
+    branch: BRANCH,
+    API_URL: API_URL
   });
 
   // set environment suffix so these environments are loaded.
